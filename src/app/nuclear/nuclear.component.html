@@ -1,0 +1,42 @@
+<main>
+    <div class="col pb-3">
+      <div *ngIf="parentCountry.hasNuclearTechnology; then nuclearTechnology; else noNuclearTechnology"></div>
+      <ng-template #noNuclearTechnology>
+        <button type="button" class="btn btn-outline-danger" (click)="buyNuclearTechnologies()">Купить ядерные технологии</button>
+      </ng-template>
+      <ng-template #nuclearTechnology>
+        <div class="row g-6 justify-content-center">
+          <div class="col">
+            <div class="fs-4"><span class="badge text-bg-danger rounded-pill">Есть ядерные технологии</span></div>
+          </div>
+          <div class="col">
+            <div class="row g-2 justify-content-center">
+              <div class="col">
+                <div class="fs-4">
+                  <button class="btn btn-light position-relative" (click)="buyBomb()">
+                    Ядерные бомбы: {{parentCountry.bombsAmount}}
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {{bombsBuyed}}
+                      <span class="visually-hidden">Количество бомб, купленных на этом ходу.</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="col">
+                  <button type="button" class="btn btn-warning" (click)="attack()">
+                    Сбросить бомбу <i class="bi bi-exclamation-diamond"></i>
+                  </button>
+                </div>
+                <div class="col">
+                  <select class="form-select" [(ngModel)]="selectedCity">
+                    <option  *ngFor="let city of cities" [ngValue]="city">{{city.title}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+</main>

@@ -1,0 +1,32 @@
+<main>
+    <ul class="list-group">
+        <li class="list-group-item d-flex align-items-center justify-content-between fs-5" *ngFor="let city of cities">
+            <div>
+                {{city.title}}
+                <div *ngIf="city.hasShield; then showShieldBlock else setShieldBlock"></div>
+                <ng-template #showShieldBlock>
+                    <span class="ps-1" >
+                        <span class="badge text-bg-success rounded-pill">
+                          <i class="bi bi-shield-check"></i>
+                        </span>
+                    </span>
+                </ng-template>
+                <ng-template #setShieldBlock>
+                  <span class="ps-2">
+                    <button type="button" class="btn btn-outline-success btn-sm" (click)="setShield(city)">Установить щит</button>
+                  </span>
+                </ng-template>
+            </div>
+            <div>
+              <span class="badge text-bg-primary rounded-pill">
+                Уровень развития:
+                <span class="ps-1">{{city.development}}</span>
+                <span class="badge text-bg-primary rounded-pill"></span>
+              </span>
+              <span class="ps-2">
+                <button type="button" class="btn btn-outline-info btn-sm" (click)="upgrade(city)">Улучшить</button>
+              </span>
+            </div>
+        </li>
+    </ul>
+</main>

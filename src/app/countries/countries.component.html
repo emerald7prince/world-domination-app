@@ -1,0 +1,10 @@
+<main>
+    <div class="container text-center p-3">
+        <div class="row g-5 justify-content-center">
+            <div class="col-4" *ngFor="let country of countries">
+                <div class="h5 p-1">{{country.title}} <span class="badge text-bg-success">{{country.standartOfLiving}}</span></div>
+                <app-cities [parentCountry]="country"></app-cities>
+            </div>
+        </div>
+    </div>
+</main>
