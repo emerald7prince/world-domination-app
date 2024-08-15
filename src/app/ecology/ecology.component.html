@@ -1,0 +1,12 @@
+<div class="p-2">
+    <div class="d-flex justify-content-center">
+        <p class="h3">Экология:</p>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="w-75">
+            <div class="progress" role="progressbar" aria-label="Экология" [attr.aria-valuenow]="ecology.level" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated overflow-visible fs-5" [style]="'width: ' + ecology.level + '%'">{{ecology.level}}%</div>
+            </div>
+        </div>
+    </div>
+  </div>
