@@ -1,1 +1,14 @@
-<button type="button" class="btn btn-primary" (click)="startNewGame()">Начать новую игру</button>
+<button type="button" class="btn p-3" data-bs-toggle="modal" data-bs-target="#settingsModal"><i class="bi bi-gear-wide" style="font-size: 2rem"></i></button>
+<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="settingsLabel">Настройки</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn btn-primary" (click)="startNewGame()">Начать новую игру</button>
+      </div>
+    </div>
+  </div>
+</div>

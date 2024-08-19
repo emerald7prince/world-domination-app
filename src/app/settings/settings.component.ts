@@ -3,6 +3,7 @@ import { remult } from 'remult';
 import { Country } from '../../shared/country';
 import { City } from '../../shared/city';
 import { Ecology } from '../../shared/ecology';
+import { Sanction } from '../../shared/sanction';
 
 @Component({
   selector: 'app-settings',
@@ -15,9 +16,26 @@ export class SettingsComponent {
   countryRepo = remult.repo(Country);
   cityRepo = remult.repo(City);
   ecologyRepo = remult.repo(Ecology);
+  sanctionsRepo = remult.repo(Sanction);
 
   async startNewGame() {
+    this.ecologyRepo.delete(await this.ecologyRepo.findOne());
     await this.ecologyRepo.insert({level: 90});
+
+    var deleteCities = await this.cityRepo.find();
+    for (let city of deleteCities) {
+      await this.cityRepo.delete(city);
+    };
+
+    var deleteSanctions = await this.sanctionsRepo.find();
+    for (let sanction of deleteSanctions) {
+      await this.sanctionsRepo.delete(sanction);
+    };
+
+    var deleteCountries = await this.countryRepo.find();
+    for (let country of deleteCountries) {
+      await this.cityRepo.delete(country);
+    };
 
     var country = await this.countryRepo.insert({ title: "Россия" });
     await this.countryRepo.relations(country).cities.insert([
